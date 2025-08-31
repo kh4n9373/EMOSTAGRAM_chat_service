@@ -1,0 +1,30 @@
+[project]
+name = "eq-chat-service"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "KhangPTT373",email = "phmtrntuankhang@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "google-generativeai (>=0.8.5,<0.9.0)",
+    "requests (>=2.32.5,<3.0.0)",
+    "openai (>=1.100.2,<2.0.0)",
+    "notebook (>=7.4.5,<8.0.0)",
+    "sentence-transformers (>=5.1.0,<6.0.0)",
+    "google-genai (>=1.31.0,<2.0.0)",
+    "letta (>=0.11.4,<0.12.0)",
+    "uvicorn (>=0.35.0,<0.36.0)",
+    "fastapi (>=0.116.1,<0.117.0)",
+    "twisted (>=25.5.0,<26.0.0)",
+    "cassandra-driver[asyncio] (>=3.29.2,<4.0.0)",
+    "gevent (>=25.5.1,<26.0.0)",
+    "pymongo (>=4.14.1,<5.0.0)",
+    "confluent-kafka (>=2.11.1,<3.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
