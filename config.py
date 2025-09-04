@@ -10,6 +10,7 @@ class Settings(BaseSettings):
 
     openai_api_key: str 
     openai_base_url: str 
+    google_api_key: str | None = None
     
     datastax_token: str
     astra_client_id: str
@@ -18,6 +19,15 @@ class Settings(BaseSettings):
     
     mongodb_url: str
     kafka_bootstrap: str
+    tavily_api_key: str | None = None
+    # LangSmith / LangChain tracing
+    langchain_api_key: str | None = None
+    langchain_project: str | None = None
+    langchain_tracing_v2: bool = False
+    # Qdrant vector DB
+    qdrant_url: str | None = None
+    qdrant_api_key: str | None = None
+    qdrant_collection: str = "ltm_vectors"
     @property
     def debug(self) -> bool:
         return self.environment == "dev"

@@ -60,3 +60,7 @@ class ConversationService:
             newest_first=newest_first,
             projection=projection,
         )
+
+    def delete_conversation(self, *, user_id: Union[int, str]) -> Dict[str, Any]:
+        deleted = self.repo.delete_by_user(user_id=user_id)
+        return {"deleted": deleted}

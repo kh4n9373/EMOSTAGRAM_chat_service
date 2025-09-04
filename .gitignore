@@ -4,3 +4,5 @@ secure-connect-emostagram.zip
 *.ipynb
 
 __pycache__/
+
+.langgraph_api/

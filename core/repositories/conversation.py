@@ -85,7 +85,7 @@ class ConversationRepo:
         if docs:
             last = docs[-1]
             next_cursor = self._encode_cursor({
-                "last_created_at": last["created_at"],
+                "last_created_at": last["created_at"].isoformat() if isinstance(last.get("created_at"), datetime) else last.get("created_at"),
                 "last_id": str(last["_id"]),
             })
 
@@ -94,6 +94,13 @@ class ConversationRepo:
             "next_cursor": next_cursor,
             "page_size": page_size,
         }
+
+    def delete_by_user(self, *, user_id: int | str) -> int:
+        uid = self._normalize_user_id(user_id)
+        cand = {uid, str(uid)}
+        coll = self.client._MongoManager__database[self.collection]
+        res = coll.delete_many({"user_id": {"$in": list(cand)}})
+        return int(getattr(res, "deleted_count", 0))
     @staticmethod
     def _normalize_user_id(user_id: int | str) -> int | str:
         if isinstance(user_id, str) and user_id.isdigit():
